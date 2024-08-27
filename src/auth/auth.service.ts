@@ -18,6 +18,7 @@ import { ResponseDeleteDTO } from 'src/global/dto/response.delete.dto';
 import { ChangePasswordDTO } from './dto/change-password.dto';
 import { UpdateProfileDTO } from './dto/update-profile.dto';
 import { FileUploadService } from 'src/file/file-upload.service';
+import { Role } from 'src/global/enum/role.enum';
 
 @Injectable()
 export class AuthService {
@@ -360,7 +361,7 @@ export class AuthService {
   async deleteAccount(user: User) {
     try {
       // validate before delete
-      if (user.id === 1) {
+      if (user.roleId === Role.admin) {
         throw new BadRequestException('Can not delete super admin account');
       }
       // start delete account
