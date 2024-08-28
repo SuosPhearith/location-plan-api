@@ -25,6 +25,7 @@ export class DirectionController {
   constructor(private readonly directionService: DirectionService) {}
 
   @Post()
+  @UseGuards(AuthenticationGuard)
   @UseInterceptors(FileInterceptor('file', multerConfig))
   async create(
     @Body() createDirectionDto: CreateDirectionDto,
@@ -41,6 +42,7 @@ export class DirectionController {
   }
 
   @Get(':id')
+  @UseGuards(AuthenticationGuard)
   async findOne(
     @Param('id', ParseIntPipe) id: number,
     @Query('order') order: string,
@@ -49,6 +51,7 @@ export class DirectionController {
   }
 
   @Delete(':id')
+  @UseGuards(AuthenticationGuard)
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.directionService.remove(+id);
   }
