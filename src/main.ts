@@ -14,12 +14,15 @@ async function bootstrap() {
   );
   // Enable CORS
   app.enableCors({
-    origin: [
-      process.env.ORIGIN_URL_1,
-      process.env.ORIGIN_URL_2,
-      process.env.ORIGIN_URL_3,
-    ],
+    origin: true, // Allows all origins
   });
+  // app.enableCors({
+  //   origin: [
+  //     process.env.ORIGIN_URL_1,
+  //     process.env.ORIGIN_URL_2,
+  //     process.env.ORIGIN_URL_3,
+  //   ],
+  // });
   await app.listen(process.env.PORT || 3000);
   console.log('===============================');
   console.log('||   🚀  Running Server  🚀  ||');
