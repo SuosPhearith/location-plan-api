@@ -141,6 +141,9 @@ export class UserService {
       if (!user) {
         throw new NotFoundException();
       }
+      if (user.roleId === Role.admin) {
+        throw new BadRequestException('Cannot bad admin account!');
+      }
       await this.prisma.user.update({
         where: { id: id },
         data: { status: !user.status },
