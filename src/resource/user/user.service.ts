@@ -50,10 +50,12 @@ export class UserService {
 
     // Add query conditions if a search query is provided
     if (query) {
+      const lowerCaseQuery = query.toLowerCase();
+
       where = {
         OR: [
-          { name: { contains: query, mode: 'insensitive' } }, // Search by name
-          { email: { contains: query, mode: 'insensitive' } }, // Search by name
+          { note: { contains: lowerCaseQuery } },
+          { email: { contains: lowerCaseQuery } },
         ],
       };
     }

@@ -143,10 +143,11 @@ export class DirectionService {
 
     // Add query conditions if a search query is provided
     if (query) {
+      const lowerCaseQuery = query.toLowerCase();
       where = {
         OR: [
-          { note: { contains: query, mode: 'insensitive' } }, // Search by name
-          { group: { contains: query, mode: 'insensitive' } }, // Search by name
+          { note: { contains: lowerCaseQuery } },
+          { group: { contains: lowerCaseQuery } },
         ],
       };
     }
