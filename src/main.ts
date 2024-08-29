@@ -14,22 +14,8 @@ async function bootstrap() {
   );
   // Enable CORS
   app.enableCors({
-    origin: (origin, callback) => {
-      // Check if origin is in the allowed list or allow all origins
-      const allowedOrigins = [process.env.ORIGIN_URL_1];
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    credentials: true,
-    allowedHeaders: 'Content-Type, Authorization',
+    origin: true,
   });
-  // app.enableCors({
-  //   origin: true, // Allows all origins
-  // });
   // app.enableCors({
   //   origin: [
   //     process.env.ORIGIN_URL_1,
