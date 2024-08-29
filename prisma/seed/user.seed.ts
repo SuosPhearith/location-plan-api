@@ -16,7 +16,7 @@ export const users = [
   },
   {
     id: 2,
-    name: 'Vann Chansethy',
+    name: 'Rin Darith',
     email: 'rindarith@gmail.com',
     password: 'Darith@123',
     gender: Gender.Male,
