@@ -54,7 +54,7 @@ export class UserService {
 
       where = {
         OR: [
-          { note: { contains: lowerCaseQuery } },
+          { name: { contains: lowerCaseQuery } },
           { email: { contains: lowerCaseQuery } },
         ],
       };
